@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "VfGtGOGgPNH4FpMRn1hK36oC4X/kNVGb/cFEbtw3LMs=",
+  "Source": "WebSocketApi",
+  "BasePath": "_content/WebSocketApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebSocketApi\\wwwroot",
+      "Source": "WebSocketApi",
+      "ContentRoot": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\",
+      "BasePath": "_content/WebSocketApi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\index.html",
+      "SourceId": "WebSocketApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\",
+      "BasePath": "_content/WebSocketApi",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}
