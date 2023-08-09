@@ -1,3 +1,3 @@
 # web-socket-server
 
-Web Socket Server using C#
+Web Socket Server using C# and Clean Architecture
