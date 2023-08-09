@@ -1,5 +1,7 @@
 using System.Net.WebSockets;
 using System.Text;
+using Domain.Entities;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebSocketsSample.Controllers;
@@ -8,6 +10,20 @@ namespace WebSocketsSample.Controllers;
 public class WebSocketController : ControllerBase
 {
 
+    protected readonly ConnectionWSManager _connectionManager;
+
+    public WebSocketController(ConnectionWSManager connectionManager)
+    {
+        this._connectionManager = connectionManager;
+    }
+
+
+    [Route("/connections")]
+    public IActionResult GetConnections()
+    {
+        var connections = _connectionManager.GetAllConnections(); // Obter conexões usando sua lógica de gerenciamento
+        return Ok(connections);
+    }
 
 
     [Route("/ws")]
@@ -17,8 +33,15 @@ public class WebSocketController : ControllerBase
         {
             using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
 
-            Console.WriteLine("New connection: " + HttpContext.Connection.RemoteIpAddress);
+            string ipRemote = HttpContext.Connection.RemoteIpAddress != null ? HttpContext.Connection.RemoteIpAddress.ToString() : "0.0.0.0";
+
+            var connectionWS = new ConnectionWS(webSocket, ipRemote);
+            _connectionManager.AddConnection(connectionWS);
+
+            Console.WriteLine("New connection: " + ipRemote);
             await Echo(webSocket);
+
+            _connectionManager.RemoveConnection(connectionWS);
         }
         else
         {
@@ -29,25 +52,30 @@ public class WebSocketController : ControllerBase
 
     private static async Task Echo(WebSocket webSocket)
     {
+
         var buffer = new byte[1024 * 4];
-        var receiveResult = await webSocket.ReceiveAsync(
-            new ArraySegment<byte>(buffer), CancellationToken.None);
+        var receiveResult = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
 
         while (!receiveResult.CloseStatus.HasValue)
         {
-
-            await webSocket.SendAsync(
-                new ArraySegment<byte>(buffer, 0, receiveResult.Count),
-                WebSocketMessageType.Text,
-                receiveResult.EndOfMessage,
-                CancellationToken.None
-            );
-
             receiveResult = await webSocket.ReceiveAsync(
                 new ArraySegment<byte>(buffer), CancellationToken.None
             );
 
-            Console.WriteLine("Send: " + webSocket);
+            Console.WriteLine(Encoding.UTF8.GetString(buffer));
+
+            var message = "{\"name\":\"Servidor\",\"text\":\"Recebido\"}";
+
+            Console.WriteLine("Send: " + message);
+
+            var bytes = Encoding.Default.GetBytes(message);
+            var arraySegment = new ArraySegment<byte>(bytes);
+            await webSocket.SendAsync(
+                arraySegment,
+                WebSocketMessageType.Text,
+                true,
+                CancellationToken.None
+            );
 
         }
 
@@ -57,22 +85,4 @@ public class WebSocketController : ControllerBase
             CancellationToken.None
         );
     }
-
-    //private async Task SendMessageToSockets(string message)
-    //{
-    //    IEnumerable<SocketConnection> toSentTo;
-
-    //    lock (websocketConnections)
-    //    {
-    //        toSentTo = websocketConnections.ToList();
-    //    }
-
-    //    var tasks = toSentTo.Select(async websocketConnection =>
-    //    {
-    //        var bytes = Encoding.Default.GetBytes(message);
-    //        var arraySegment = new ArraySegment<byte>(bytes);
-    //        await websocketConnection.WebSocket.SendAsync(arraySegment, WebSocketMessageType.Text, true, CancellationToken.None);
-    //    });
-    //    await Task.WhenAll(tasks);
-    //}
 }

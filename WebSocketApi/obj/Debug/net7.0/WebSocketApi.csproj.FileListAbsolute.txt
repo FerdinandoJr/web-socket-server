@@ -32,3 +32,9 @@ C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\obj\Debug\net7.0\refint
 C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\obj\Debug\net7.0\WebSocketApi.pdb
 C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\obj\Debug\net7.0\WebSocketApi.genruntimeconfig.cache
 C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\obj\Debug\net7.0\ref\WebSocketApi.dll
+C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\bin\Debug\net7.0\Application.dll
+C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\bin\Debug\net7.0\Domain.dll
+C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\bin\Debug\net7.0\Infrastructure.dll
+C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\bin\Debug\net7.0\Application.pdb
+C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\bin\Debug\net7.0\Domain.pdb
+C:\Users\Weslindo\source\repos\WebSocketApi\WebSocketApi\bin\Debug\net7.0\Infrastructure.pdb

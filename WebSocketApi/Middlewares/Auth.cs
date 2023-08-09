@@ -15,13 +15,13 @@ namespace WebSocketExample.Middlewares
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
+            await next(context);
             string authHeader = context.Request.Headers["Authorization"];
-           
 
-            Console.WriteLine(context.Request.Headers.ToString());
+            //Console.WriteLine(context.Request.Headers.ToString());
 
             
-            Console.WriteLine(authHeader);
+            //Console.WriteLine(authHeader);
 
             if (authHeader != null && authHeader.StartsWith("Bearer"))
             {
@@ -44,7 +44,7 @@ namespace WebSocketExample.Middlewares
 
                 await next(context);
             }
-            Console.WriteLine("Connection unauthorized");
+           // Console.WriteLine("Connection unauthorized");
         }
 
         private ClaimsPrincipal ValidateToken(string token)

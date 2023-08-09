@@ -8,6 +8,9 @@
     ".NETCoreApp,Version=v7.0": {
       "WebSocketApi/1.0.0": {
         "dependencies": {
+          "Application": "1.0.0",
+          "Domain": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.9",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -72,6 +75,28 @@
             "fileVersion": "6.5.0.0"
           }
         }
+      },
+      "Application/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "Application.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "runtime": {
+          "Domain.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "dependencies": {
+          "Application": "1.0.0",
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -129,6 +154,21 @@
       "sha512": "sha512-OvbvxX+wL8skxTBttcBsVxdh73Fag4xwqEU2edh4JMn7Ws/xJHnY/JB1e9RoCb6XpDxUF3hD9A0Z1lEUx40Pfw==",
       "path": "swashbuckle.aspnetcore.swaggerui/6.5.0",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+    },
+    "Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

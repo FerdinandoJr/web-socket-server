@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\_index.html",
+      "PackagePath": "staticwebassets\\_index.html"
+    },
+    {
       "Id": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

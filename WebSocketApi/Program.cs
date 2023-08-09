@@ -1,8 +1,10 @@
+using Infrastructure;
 using WebSocketExample.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<ConnectionWSManager>(); // Registro do ConnectionWSManager
 builder.Services.AddTransient<Auth>();
 
 var app = builder.Build();
