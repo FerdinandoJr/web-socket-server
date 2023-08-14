@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\EventoCadastrar.cs" />
+    <Compile Remove="Controllers\EventoCadastrarComando.cs" />
+    <Compile Remove="Controllers\EventoComandoFactory.cs" />
+    <Compile Remove="Controllers\EventType.cs" />
+    <Compile Remove="Controllers\IEventoComando.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="WebSocketsApi.csproj" />
   </ItemGroup>
 
@@ -22,3 +30,4 @@
   </ItemGroup>
 
 </Project>
+

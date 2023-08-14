@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Connection</title>
+    <script>
+        function connectToWebSocket() {
+            // Estabelece a conexão WebSocket
+            var scheme = document.location.protocol === "https:" ? "wss" : "ws";
+            var port = document.location.port ? (":" + document.location.port) : "";
+
+            const connectionUrl = scheme + "://" + document.location.hostname + port + "/ws";
+
+            var ws = new WebSocket(connectionUrl);
+
+            ws.onopen = function() {
+                console.log('Connected to WebSocket');
+            };
+
+            ws.onmessage = function(event) {
+                var msg = JSON.parse(event.data);
+                console.log(msg);
+            };
+        }
+
+        window.onload = function() {
+            // connectToWebSocket(); // Conectar na carga da página
+
+            // Função para obter todas as conexões
+            function getConnections() {
+                fetch('/connections')
+                    .then(response => response.json())
+                    .then(data => {
+                        var connectionsList = document.getElementById('connections-list');
+                        connectionsList.innerHTML = '';
+                        console.log(data);
+                        data.forEach(connection => {
+                            var listItem = document.createElement('li');
+                            listItem.textContent = 'Connection: ' + connection; // Ajuste conforme a estrutura da sua resposta
+                            connectionsList.appendChild(listItem);
+                        });
+                    });
+            }
+
+            // Chame getConnections a cada 5 segundos
+            setInterval(getConnections, 5000);
+
+            // Adicionando evento ao botão para criar conexões
+            document.getElementById('connect-button').addEventListener('click', connectToWebSocket);
+        };
+    </script>
+</head>
+<body>
+    <h1>WebSocket Connection</h1>
+    <button id="connect-button">Criar Conexão</button>
+    <h2>Connections:</h2>
+    <ul id="connections-list"></ul>
+</body>
+</html>

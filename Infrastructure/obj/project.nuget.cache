@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o94i7oDIFMbjOyWVsJN5+cNAuiTg9mp3Wnx153cUfsUamU3AqGAXngigfBtdVTph29rVbn0RTWLAMS3NornBrQ==",
+  "dgSpecHash": "FWDsAbs4O3GHsFZZkU1qSDD4yxGM/LHX8GHIteehwWSkLOXF4EHGXyCMHomfLR8RwJL+44btVBMOhvI6m8BD3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Weslindo\\Documents\\GitHub\\web-socket-server\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
