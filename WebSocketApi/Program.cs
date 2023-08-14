@@ -1,11 +1,31 @@
+using Application.Use_Cases;
+using Domain.Interfaces;
+using Domain.Services;
 using Infrastructure;
+using Infrastructure.Repositories;
 using WebSocketExample.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+//
+// Domain dependencies
+//
+builder.Services.AddSingleton<ConnectionWSService>();
+
+//
+// Infra dependencies
+//
+builder.Services.AddSingleton<IConnectionWSRepository, ConnectionWSRepository>();
+
+//
+// Application dependencies
+//
+builder.Services.AddSingleton<CreateConnectionUseCase>();
+builder.Services.AddSingleton<GetConnectionsUseCase>();
+
 builder.Services.AddSingleton<ConnectionWSManager>(); // Registro do ConnectionWSManager
 builder.Services.AddTransient<Auth>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 

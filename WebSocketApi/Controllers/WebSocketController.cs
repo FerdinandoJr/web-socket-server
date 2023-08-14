@@ -21,7 +21,7 @@ public class WebSocketController : ControllerBase
     [Route("/connections")]
     public IActionResult GetConnections()
     {
-        var connections = _connectionManager.GetAllConnections(); // Obter conexões usando sua lógica de gerenciamento
+        var connections = _connectionManager.GetConnections(); // Obter conexões usando sua lógica de gerenciamento
         return Ok(connections);
     }
 
@@ -34,14 +34,9 @@ public class WebSocketController : ControllerBase
             using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
 
             string ipRemote = HttpContext.Connection.RemoteIpAddress != null ? HttpContext.Connection.RemoteIpAddress.ToString() : "0.0.0.0";
-
-            var connectionWS = new ConnectionWS(webSocket, ipRemote);
-            _connectionManager.AddConnection(connectionWS);
-
-            Console.WriteLine("New connection: " + ipRemote);
-            await Echo(webSocket);
-
-            _connectionManager.RemoveConnection(connectionWS);
+            
+            _connectionManager.CreateConnection(webSocket, ipRemote);
+        
         }
         else
         {
@@ -49,40 +44,4 @@ public class WebSocketController : ControllerBase
         }
     }
     #endregion
-
-    private static async Task Echo(WebSocket webSocket)
-    {
-
-        var buffer = new byte[1024 * 4];
-        var receiveResult = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-
-        while (!receiveResult.CloseStatus.HasValue)
-        {
-            receiveResult = await webSocket.ReceiveAsync(
-                new ArraySegment<byte>(buffer), CancellationToken.None
-            );
-
-            Console.WriteLine(Encoding.UTF8.GetString(buffer));
-
-            var message = "{\"name\":\"Servidor\",\"text\":\"Recebido\"}";
-
-            Console.WriteLine("Send: " + message);
-
-            var bytes = Encoding.Default.GetBytes(message);
-            var arraySegment = new ArraySegment<byte>(bytes);
-            await webSocket.SendAsync(
-                arraySegment,
-                WebSocketMessageType.Text,
-                true,
-                CancellationToken.None
-            );
-
-        }
-
-        await webSocket.CloseAsync(
-            receiveResult.CloseStatus.Value,
-            receiveResult.CloseStatusDescription,
-            CancellationToken.None
-        );
-    }
 }

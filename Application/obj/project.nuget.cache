@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rwox4WXyum0N9SrxNZRfPAHMVu87bHdgnFjD0D4Y3Pb3zPVwZp1ste6qUl1v2bQ1kWeGSB+ZP2km+BCqHP4vWw==",
+  "dgSpecHash": "IwUQ1dd/xRkTYWVY2cN6yZKIwkZ/zKp/GSdZJ/pAHkr+rrXHziwDcE0pK2dHH4saZLa5czpp2TmfnFfqiqWclw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\Application\\Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

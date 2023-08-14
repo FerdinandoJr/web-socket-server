@@ -1,32 +1,30 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Use_Cases;
+using Domain.Entities;
+using System.Net.WebSockets;
 
 namespace Infrastructure
 {
     public class ConnectionWSManager
     {
-        private readonly List<ConnectionWS> _connections = new List<ConnectionWS>();
+        CreateConnectionUseCase CreateConnectionUseCase;
+        GetConnectionsUseCase GetConnectionsUseCase;
 
-        public void AddConnection(ConnectionWS connection)
+        public ConnectionWSManager(CreateConnectionUseCase createConnectionUseCase, GetConnectionsUseCase getConnectionsUseCase)
         {
-            _connections.Add(connection);
+            CreateConnectionUseCase = createConnectionUseCase;  
+            GetConnectionsUseCase = getConnectionsUseCase; 
+        }
+        
+        public void CreateConnection(WebSocket webSocket, String ipRemote)
+        {
+            CreateConnectionUseCase.Execute(webSocket, ipRemote);
         }
 
-        public void RemoveConnection(ConnectionWS connection)
+        public IEnumerable<ConnectionWS> GetConnections()
         {
-            _connections.Remove(connection);
+            return GetConnectionsUseCase.Execute();
         }
 
-        public List<ConnectionWS> GetAllConnections()
-        {
-            return _connections;
-        }
-
-        // Outros métodos conforme necessário
     }
 
 }

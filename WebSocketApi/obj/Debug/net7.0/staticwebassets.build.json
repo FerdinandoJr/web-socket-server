@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/f3YpIcMzJk+saDSUXXs6Hz2ZXpJW1oy2SBlFHJ5l2E=",
+  "Hash": "0stgPquuJ7OsKfAVJfpfyVgkAbGohHqvW9e9o5PWXp0=",
   "Source": "WebSocketApi",
   "BasePath": "_content/WebSocketApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebSocketApi\\wwwroot",
       "Source": "WebSocketApi",
-      "ContentRoot": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\WebSocketApi\\wwwroot\\",
       "BasePath": "_content/WebSocketApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\_index.html",
+      "Identity": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\WebSocketApi\\wwwroot\\_index.html",
       "SourceId": "WebSocketApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\WebSocketApi\\wwwroot\\",
       "BasePath": "_content/WebSocketApi",
       "RelativePath": "_index.html",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\_index.html"
     },
     {
-      "Identity": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\WebSocketApi\\wwwroot\\index.html",
       "SourceId": "WebSocketApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Weslindo\\source\\repos\\WebSocketApi\\WebSocketApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\junio\\Source\\Repos\\FerdinandoJr\\web-socket-server\\WebSocketApi\\wwwroot\\",
       "BasePath": "_content/WebSocketApi",
       "RelativePath": "index.html",
       "AssetKind": "All",
