@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using WebSocketApi.Events.Factories;
+using WebSocketApi.Events.Factories.DTOs;
 using WebSocketApi.Events.Interfaces;
 using WebSocketApi.Events.Types;
 
@@ -27,20 +28,22 @@ namespace WebSocketApi.Events
             {
 
                 Console.WriteLine(jsonString);
-                EventJson? eventJson = JsonSerializer.Deserialize<EventJson>(jsonString);
+                var eventJson = JsonSerializer.Deserialize<EventJson>(jsonString);
                 
                 if (eventJson == null)
                 {
                     throw new JsonException("JSON null");
                 }
 
+
+                // Can we remove ignoreCase?
                 bool isEventType = Enum.TryParse(eventJson.Event, ignoreCase: true, out EventType eventType);                
                 if (isEventType) // A conversão foi bem-sucedida, pegando função
                 {
 
-                    IEventFactory factory = factories[eventType];
+                    var factory = factories[eventType];
 
-                    factory.Execute(jsonString);
+                    factory.ExecuteEvent(jsonString);
                 }
                 else
                 {

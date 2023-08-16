@@ -1,10 +1,11 @@
-﻿using WebSocketApi.Events.Interfaces;
+﻿using WebSocketApi.Events.Factories.DTOs;
+using WebSocketApi.Events.Interfaces;
 
 namespace WebSocketApi.Events.Factories
 {
-    public class LogoutFactory : IEventFactory
+    public class LogoutFactory : EventFactoryBase<LogoutInputDTO>
     {
-        public void Execute(string jsonString)
+        public override void Execute(LogoutInputDTO input)
         {
             Console.WriteLine("SAINDO DA VIDA!");
         }

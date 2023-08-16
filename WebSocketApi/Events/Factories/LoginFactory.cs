@@ -1,12 +1,13 @@
-﻿using WebSocketApi.Events.Interfaces;
+﻿using WebSocketApi.Events.Factories.DTOs;
+using WebSocketApi.Events.Interfaces;
 
 namespace WebSocketApi.Events.Factories
 {
-    public class LoginFactory : IEventFactory
+    public class LoginFactory : EventFactoryBase<LoginInputDTO>
     {
-        public void Execute(string jsonString)
+        public override void Execute(LoginInputDTO input)
         {
-            Console.WriteLine("FAZENDO LOGIN DO MALUKO");
+            Console.WriteLine("FAZENDO O LOGIN DO MALUKO!");
         }
     }
 }
